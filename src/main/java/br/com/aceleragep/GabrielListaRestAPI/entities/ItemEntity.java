@@ -30,7 +30,6 @@ public class ItemEntity {
 	private boolean concluido;
 	
 	@Column(name="lista")
-	private List<ListaEntity> lista;
-	
+	private List<ListaEntity> listas;
 	
 }

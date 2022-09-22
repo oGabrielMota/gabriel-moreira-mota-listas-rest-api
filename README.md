@@ -13,18 +13,13 @@ Para usar/testar a aplicação do mesmo necessita de alguns passos:
 3-> Rodar a api do projeto;
 <br>
 <br>
-3.1 -> Via IDE de sua preferencia
-    ou 
- <br>
- <br>
-Pelo arquivo **GabrielMoreiraMotaRestAPI-0.0.1-SNAPSHOT** ( no Prompt de Comando na pasta com o arquivo, executando o aquivo da seguinte forma: "java -jar                    GabrielMoreiraMotaRestAPI-0.0.1-SNAPSHOT.jar
-<br>
-<br>
-4-> Fazer os teste: 
+4-> Fazer os testes: 
 <br>
     4.1-> Via Postman, Insomnia entre outros 
  <br>
+ <br>
   ou 
+  <br>
   <br>
    4.2-> De uma maneira simplificada, via a propria documentação, conforme informado logo a baixo :
   <br>

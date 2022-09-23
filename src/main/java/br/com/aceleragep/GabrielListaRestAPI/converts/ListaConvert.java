@@ -1,15 +1,12 @@
 package br.com.aceleragep.GabrielListaRestAPI.converts;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 
 import br.com.aceleragep.GabrielListaRestAPI.dto.inputs.ListaInput;
 import br.com.aceleragep.GabrielListaRestAPI.dto.outputs.ListaOutput;
@@ -20,29 +17,23 @@ import br.com.aceleragep.GabrielListaRestAPI.entities.ListaEntity;
 public class ListaConvert {
 	
 	@Autowired
-	private ModelMapper modelMapper;
-	
-	public ListaEntity inputToNewEntity(ListaInput listaInput) {
-		return modelMapper.map(listaInput, ListaEntity.class);
-	}
-	
+	private ModelMapper model;
+
 	public ListaOutput entityToOutput(ListaEntity listaEntity) {
-		return modelMapper.map(listaEntity, ListaOutput.class);
+		return model.map(listaEntity, ListaOutput.class);
 	}
-	
-	public void copyInputToEntity(ListaEntity  listaEncontrada, @Valid ListaInput listaInput) {
-		modelMapper.map(listaInput, listaEncontrada);
+
+	public List<ListaOutput> ListEntityToOutput(List<ListaEntity> autoresEntity) {
+		return autoresEntity.stream().map(autor -> this.entityToOutput(autor)).collect(Collectors.toList());
 	}
-	
-	public Page<ListaOutput> entityToOutput(Page<ListaEntity> listas, Pageable paginacao) {
-		return new PageImpl<>(listas.stream().map(autorEntity -> {
-			return entityToOutput(autorEntity);
-		}).collect(Collectors.toList()));
+
+
+	public ListaEntity inputToEntity(ListaInput listaInput) {
+		return model.map(listaInput, ListaEntity.class);
 	}
-	
-	public Page<ListaOutput> listPageEntityToListPageOutput(Page<ListaEntity> item){
-		return item.map(this::entityToOutput);
+
+	public void copyInputToEntity(ListaInput listaInput, ListaEntity listaEntity) {
+		model.map(listaInput, listaEntity);
 	}
-	
 }
 

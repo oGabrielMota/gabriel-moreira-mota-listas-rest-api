@@ -1,15 +1,22 @@
 package br.com.aceleragep.GabrielListaRestAPI.dto.inputs;
 
-import lombok.Getter;
-import lombok.Setter;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+
 import org.hibernate.validator.constraints.Length;
 
-@Getter
-@Setter
+
 public class ListaInput {
-	@NotEmpty(message = "Titulo é obrigatório!")
-	@Length(min = 3, max = 100, message = "Titulo deve ter até 100 Caracteres")
-	private String titulo;
+	
+	@NotBlank(message = "Titulo é obrigatório")
+	@Length(message = "O campo Titulo deve ter no máximo 100 caracteres!", max = 100)
+	String titulo;
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
 }

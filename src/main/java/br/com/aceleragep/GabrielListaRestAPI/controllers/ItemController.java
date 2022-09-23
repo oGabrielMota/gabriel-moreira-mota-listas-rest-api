@@ -47,7 +47,7 @@ public class ItemController {
 	@Autowired
 	private ListaService listaService;
 
-	@Operation(summary = "Cria novo Item", description = "EndPoint destinado a Criar um novo item e vincular ele a uma Lista existe")
+	@Operation(summary = "Cadastra novo Item", description = "EndPoint destinado a Cadastrar um novo item e vincular ele a uma Lista existe")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
 	public ResponseEntity<ItemOutput> criaItem(@Valid @RequestBody ItemInput itemInput, UriComponentsBuilder uriBuild) {
@@ -68,7 +68,7 @@ public class ItemController {
 		return itemConvert.entityToOutput(itemService.altera(itemLocalizado));
 	}
 
-	@Operation(summary = "Deleta item pelo ID", description = "EndPoint destinado a Excluir um item já existente através do seu ID" )
+	@Operation(summary = "Exclui item pelo ID", description = "EndPoint destinado a Excluir um item já existente através do seu ID" )
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void remove(@Parameter(description = "Id do Item", example = "1") @PathVariable Long id) {

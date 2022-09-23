@@ -43,7 +43,7 @@ public class ListaController {
 	@Autowired
 	private ItemService itemService;
 
-	@Operation(summary = "Cria Lista", description = "EndPoint destinado a Criar uma nova Lista")
+	@Operation(summary = "Cadastra nova Lista", description = "EndPoint destinado a Cadastrar uma nova Lista")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@PostMapping
 	public ListaOutput criaLista(@RequestBody @Valid ListaInput listaInput) {
@@ -54,7 +54,7 @@ public class ListaController {
 	}
 
 	
-	@Operation(summary = "Altera Lista", description = "EndPoint destinado a Alterar uma Lista já existente")
+	@Operation(summary = "Altera Lista", description = "EndPoint destinado a Alterar uma Lista já existente.")
 	@PutMapping("/{id}")
 	public ListaOutput alteraLista(@Parameter(description = "Id da Lista", example = "1") @PathVariable Long id,
 			@Valid @Parameter(description = "Representação de uma lista") @RequestBody ListaInput listaInput) {
@@ -80,7 +80,7 @@ public class ListaController {
 	}
 
 
-	@Operation(summary = "Deleta uma lista por ID",description = "EndPoint destinado a Remover uma Lista através do seu ID")
+	@Operation(summary = "Exclui uma lista por ID",description = "EndPoint destinado a Exclui uma Lista através do seu ID, OBS : Apagando a lista , todos os itens tambem são apagados")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void remove(@Parameter(description = "Id da Lista", example = "1") @PathVariable Long id) {
